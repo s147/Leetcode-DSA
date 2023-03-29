@@ -1,0 +1,31 @@
+class Solution {
+    public int numIslands(char[][] grid) {
+
+        //Initilization
+        int count = 0;
+        
+        //Iterating over the condition to search for an island
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+
+                //if given index is identified as 1, count will be incremented
+                if (grid[i][j] == '1') {
+                    count++;
+                    clearRestOfLand(grid, i, j); //calling the recursive method to search elements in grid
+                }
+            }
+        }
+        return count;
+    }
+    
+    private void clearRestOfLand(char[][] grid, int i, int j) {
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[i].length || grid[i][j] == '0') return;
+        
+        grid[i][j] = '0'; //Initialization
+        clearRestOfLand(grid, i+1, j); //DOWN
+        clearRestOfLand(grid, i-1, j); //TOP
+        clearRestOfLand(grid, i, j+1); //RIGHT
+        clearRestOfLand(grid, i, j-1); //LEFT
+        return;
+    }
+}
