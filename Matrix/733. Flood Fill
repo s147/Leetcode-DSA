@@ -1,0 +1,19 @@
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+        if(image[sr][sc] == newColor) //base case
+            return image;
+        
+        fill(image, sr, sc, image[sr][sc], newColor); //calling recursive method
+        return image; //returning the final image
+    }
+    
+    private void fill(int[][] image, int i, int j, int color, int newColor){
+        if(i < 0 || i >= image.length || j < 0 || j >= image[i].length || image[i][j] != color)
+            return;
+        image[i][j] = newColor; //Initialization
+        fill(image,i+1,j,color,newColor); //DOWN
+        fill(image,i-1,j,color,newColor); //TOP
+        fill(image,i,j+1,color,newColor); //RIGHT
+        fill(image,i,j-1,color,newColor); //LEFT
+    }
+}
