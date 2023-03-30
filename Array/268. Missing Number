@@ -1,0 +1,17 @@
+class Solution {
+    public int missingNumber(int[] nums) {
+    
+        //Initialization
+        int sum=0;
+        
+        //Iterating over array
+        for(int i:nums)
+            sum+=i; //adding array elements
+        
+        //Let n is the length of array
+        int n=nums.length;
+        
+        returning the differce sum of array from total sum of 'n' length 
+        return (n*(n+1)/2)-sum;
+    }
+}
